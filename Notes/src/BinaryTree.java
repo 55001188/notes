@@ -50,7 +50,24 @@ public class BinaryTree {
 	public void print() {
 		//print all the elements - no specifics on how for the time being
 		//for testing purposes
-		Node curr = head;
+		if(head == null) {
+			System.out.print("");
+		}
+		Stack<Node> n = new Stack<Node>();
+        n.push(head);
+        
+        while (n.size() != 0) {
+            Node curr = n.peek();
+            System.out.print(curr.getData() + " ");
+            n.pop();
+            
+            if (curr.right != null) {
+                n.push(curr.right);
+            }
+            if (curr.left != null) {
+                n.push(curr.left);
+            }
+        }
 		
 		
 	}
@@ -118,6 +135,7 @@ public class BinaryTree {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
 		BinaryTree b = new BinaryTree();
 		b.add(new Node(10));
 		b.add(new Node(1));
@@ -128,6 +146,8 @@ public class BinaryTree {
 		System.out.print(b.bfs());
 		System.out.println();
 		b.print();
+		
+		
 
 	}
 
